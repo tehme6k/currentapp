@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateRetentionsTable extends Migration
+class CreateRetsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,15 +13,14 @@ class CreateRetentionsTable extends Migration
      */
     public function up()
     {
-        Schema::create('retentions', function (Blueprint $table) {
+        Schema::create('rets', function (Blueprint $table) {
             $table->id();
             $table->integer('user_id');
-            $table->integer('category_id');
+            $table->integer('box_id');
             $table->integer('product_id');
-            $table->date('start_date');
-            $table->integer('part_number');
             $table->string('lot');
-            $table->date('exp_date');
+            $table->date('start_date');
+            $table->date('end_date');
             $table->timestamps();
             $table->SoftDeletes();
         });
@@ -34,6 +33,6 @@ class CreateRetentionsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('retentions');
+        Schema::dropIfExists('rets');
     }
 }

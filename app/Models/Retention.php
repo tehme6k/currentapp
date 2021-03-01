@@ -4,12 +4,11 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\SoftDeletes;
 
 class Retention extends Model
 {
-    use HasFactory;
-}
-
+use HasFactory;
 use SoftDeletes;
 protected $fillable = [
     'user_id',
@@ -26,9 +25,14 @@ public function user(){
 }
 
 public function category(){
-    return $this->hasOne(Product::class, 'id', 'category');
+    return $this->hasOne(Category::class, 'id', 'sub_category_id');
 }
 
 public function product(){
-    return $this->hasOne(User::class, 'id', 'product_id');
+    return $this->hasOne(Product::class, 'id', 'product_id');
+}
+
+
+
+
 }
