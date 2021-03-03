@@ -12,9 +12,7 @@
     <div class="container">    
         <div class="row">
 
-
-
-        <div class="col-md-8 ">
+        <div class="col-md-10 ">
             <div class="card">
 
             @if(session('success'))
@@ -72,7 +70,7 @@
 
 
 
-        <div class="col-md-4">
+        <div class="col-md-2">
         <div class="card">
             <div class="card-header"> Add Product</div>
             <div class="card-body">

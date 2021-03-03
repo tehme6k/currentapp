@@ -13,9 +13,11 @@ use Illuminate\Support\facades\DB;
 class ProductsController extends Controller
 {
     public function AllProd(){
-        $products = Product::latest()->paginate(8);
+        // $products = Product::all();
+        $products = Product::first()->paginate(5);
         $categories = Category::all(['id','name']);
         $subCategories = SubCategory::all(['id','name']);
+        // dd($products);
         // $categories = DB::table('categories')->latest()->paginate(5);
         return view('products.index', compact('products', 'categories', 'subCategories'));
     }

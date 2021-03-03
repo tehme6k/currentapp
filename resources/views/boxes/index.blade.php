@@ -26,33 +26,21 @@
 
                 <div class="card-header"> All Item Retention</div>
 
-
-            <table class="table">
+                <table class="table">
                 <thead>
                     <tr>
-                        <th scope="col">Box #</th>
-                        <th scope="col">Part Number</th>
-                        <th scope="col">Product</th>
-                        <th scope="col">Lot</th>
-                        <!-- <th scope="col">Created At</th> -->
+                        <th scope="col">Box ID</th>
+                        <th scope="col">Box Name</th>
+
                     </tr>
                 </thead>
                 <tbody>
                    
-                    @foreach($retentions as $retention)
+                    @foreach($boxes as $box)
                     <tr>
-                        <th scope="row">{{ $retention->box_id }}</th>
-                        <td>{{ $retention->pn }}</td>
-                        <td></td>
-                        <td>{{ $retention->lot }}</td>
-                        <!-- <td>
-                            @if($retention->created_at == NULL)
-                            <span class="text-danger">No Date Set</span>
-                            @else
-                        {{ $retention->created_at->diffForHumans() }}
-                            @endif
-                        
-                        </td> -->
+                        <th>{{ $box->id }}</th>
+                        <td>{{ $box->name }}</td>
+    
                         
                     </tr>
                     @endforeach
@@ -61,7 +49,11 @@
 
                 </tbody>
                 </table> 
-                {{ $retentions->links() }}               
+
+
+
+             
+             
 
             </div>
         </div>
@@ -75,7 +67,7 @@
             <div class="card-header"> Add Retention</div>
             <div class="card-body">
             
-            <form action="{{ route('store.itemRet') }}" method="POST" >
+            <form action="{{ route('store.boxes') }}" method="POST" >
             @csrf
                  <div class="form-group">
                     <label for="staticEmail2" class="visually-hidden">Box</label>
@@ -86,15 +78,7 @@
                         @enderror
 
                 </div>
-                <div class="form-group">
-                    <label for="staticEmail2" class="visually-hidden">Box</label>
-                    <input type="text" name="pn" class="form-control" id="staticEmail2" placeholder="Part Number">
 
-                        @error('pn')
-                            <span class="text-danger">{{ $message }}</span>
-                        @enderror
-
-                </div>
                 <div class="form-group">
                     <label for="staticEmail2" class="visually-hidden">Lot</label>
                     <input type="text" name="lot" class="form-control" id="staticEmail2" placeholder="Lot #">

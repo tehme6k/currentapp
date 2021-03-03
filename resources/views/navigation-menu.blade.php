@@ -28,7 +28,7 @@
                         All Products
                     </x-jet-nav-link>
                     
-                    <x-jet-nav-link href="{{ route('all.itemRet') }}">
+                    <x-jet-nav-link href="{{ route('all.boxes') }}">
                         Item Retention
                     </x-jet-nav-link>
                 </div>
