@@ -18,20 +18,33 @@ class BoxesController extends Controller
     }
 
     public function add(Request $request){
-        
-        $box = new Box;
+        $box_info = Box::latest()->first();
+        $box_id = $box_info->id;
+
+        $box_type = $request->type;
+
+        if($box_type == 'new') {
+            $box_id++;
+            $box = new Box;
+            $box->name = "Box" . $box_id;
+            $box->save();
+
+        }
+
+
         $retentions = new Retention;
-        $retentions->box_id = $request->box;   
-        $box->name = "Box" . $request->box;
-        $retentions->user_id = Auth::user()->id;    
+        $retentions->box_id = $box_id;
+        $retentions->product_id = $request->pn;
+
+        $retentions->user_id = Auth::user()->id;
         $retentions->sub_category_id = "1";
-        $retentions->start_date = Carbon::now(); 
+        $retentions->start_date = Carbon::now();
         $retentions->lot = $request->lot;
         $retentions->exp_date = Carbon::now();
-        $box->save();
-        $retentions->save();  
-      
-        return Redirect()->back()->with('success','Retention Inserted Successfully');       
+
+        $retentions->save();
+
+        return Redirect()->back()->with('success','Retention Inserted Successfully');
     }
 
 }

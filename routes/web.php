@@ -4,13 +4,13 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\SubController;
 use App\Http\Controllers\ProductsController;
-use App\Http\Controllers\ItemRetentionController;
+use App\Http\Controllers\RetentionController;
 use App\Http\Controllers\BoxesController;
-use App\Http\Controllers\TestController;
+//use App\Http\Controllers\TestController;
 use App\Models\User;
 use Illuminate\Support\Facades\DB;
 
-Route::get('/test', [TestController::class, 'ViewTest'])->name('view.test');
+//Route::get('/test', [TestController::class, 'ViewTest'])->name('view.test');
 
 Route::get('/', function () {
         return view('welcome');
@@ -35,8 +35,7 @@ Route::post('boxes/add', [BoxesController::class, 'add'])->name('store.boxes');
 //Retention Controller
 
 //show retention info from box id link
-Route::get('retention/{box}/view', [RetentionController::class, 'view'])->name('view.retention');
-
+Route::resource('retention', RetentionController::class);
 
 
 
