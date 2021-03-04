@@ -5,7 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Box extends Model
+class FGBox extends Model
 {
     protected $fillable = [
         'name',
@@ -13,13 +13,11 @@ class Box extends Model
 
 
     public function retentions(){
-        return $this->hasMany(Retention::class);
+        return $this->hasMany(FGRetetions::class);
 
     }
 
     public function product(){
         return $this->hasOne(Product::class, 'id', 'product_id');
     }
-
-
 }

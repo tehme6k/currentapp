@@ -27,10 +27,15 @@
                     <x-jet-nav-link href="{{ route('all.prod') }}">
                         All Products
                     </x-jet-nav-link>
-                    
-                    <x-jet-nav-link href="{{ route('all.boxes') }}">
-                        Item Retention
+
+                    <x-jet-nav-link href="{{ route('box.index') }}">
+                        Ingredient Retention
                     </x-jet-nav-link>
+
+                    <x-jet-nav-link href="{{ route('fg_box.index') }}">
+                        Finished Goods Retention
+                    </x-jet-nav-link>
+
                 </div>
             </div>
 
